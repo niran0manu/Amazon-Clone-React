@@ -1,24 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './Header.js';
+import Home from './Home.js';
+import Checkout from './Checkout.js';
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import { SwipeableDrawer } from '@material-ui/core';
 
 function App() {
   return (
+    //BEM convention
+    <Router>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <Header />  
+      <Switch>
+        {/* Checkout route */}
+        <Route path="/checkout">            
+                 
+          <Checkout/>
+       </Route>
+       {/* home /deafault */}
+        <Route path="/">            
+                    
+          <Home />
+       </Route>       
+      </Switch>
     </div>
+    </Router>
   );
 }
 
